@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICTE AI Verification Portal | SIH26261 — Team Kratoseyal..</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-soft: #dbeafe;
+            --danger: #dc2626;
+            --danger-soft: #fee2e2;
+            --warning: #d97706;
+            --warning-soft: #fef3c7;
+            --success: #059669;
+            --success-soft: #d1fae5;
+            --bg-main: #f1f5f9;
+            --card-bg: #ffffff;
+            --border-color: #cbd5e1;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- TOP GOVERNMENT HEADER --- */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-bottom: 3px solid #f59e0b;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .emblem-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0f172a;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+        }
+
+        .brand-titles h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sih-pill {
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid #f59e0b;
+            color: #fcd34d;
+            font-size: 0.72rem;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-titles p {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            margin-top: 3px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #6ee7b7;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.6; }
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-header {
+            background: rgba(255, 255, 255, 0.1);
+            color: #f8fafc;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-header:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background: #f8fafc;
+            color: var(--text-dark);
+            border-color: var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-outline.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* --- CASE SELECTOR BAR --- */
+        .case-bar {
+            background: white;
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .case-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .case-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .case-btn {
+            padding: 7px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: #f8fafc;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .case-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .case-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .team-header-tag {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 5px 12px;
+            border-radius: 6px;
+        }
+
+        /* --- MAIN DASHBOARD GRID --- */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1.05fr 1.15fr;
+            gap: 20px;
+            padding: 20px 2rem;
+            max-width: 1500px;
+            width: 100%;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .panel-header h2 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* --- DROPZONE --- */
+        .dropzone {
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            background: #f8fafc;
+            transition: 0.25s;
+            margin-bottom: 18px;
+        }
+
+        .dropzone:hover {
+            border-color: var(--accent);
+            background: #eff6ff;
+        }
+
+        .dropzone h3 {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 4px;
+        }
+
+        .dropzone p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .file-meta-bar {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        /* --- FORENSIC DOCUMENT VIEWER --- */
+        .forensic-toolbar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .viewer-stage {
+            position: relative;
+            width: 100%;
+            min-height: 410px;
+            background: #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid #94a3b8;
+        }
+
+        .viewer-stage.high-contrast {
+            background: #090d16;
+            filter: contrast(1.45) saturate(1.3);
+        }
+
+        .viewer-stage.high-contrast .mock-document {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-color: #334155;
+        }
+
+        .mock-document {
+            width: 92%;
+            max-width: 520px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            padding: 22px;
+            position: relative;
+            border-radius: 4px;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            transition: 0.3s;
+        }
+
+        .doc-header {
+            text-align: center;
+            border-bottom: 2px double #334155;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+        }
+
+        .doc-header h4 {
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .doc-header small {
+            color: var(--text-muted);
+            font-size: 0.73rem;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .doc-field {
+            padding: 6px 8px;
+            background: rgba(241, 245, 249, 0.6);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .viewer-stage.high-contrast .doc-field {
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .doc-field span.label {
+            display: block;
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .doc-field strong {
+            font-size: 0.86rem;
+        }
+
+        .doc-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 22px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+            position: relative;
+        }
+
+        .stamp-box {
+            border: 2px solid #1e40af;
+            color: #1e40af;
+            padding: 6px 12px;
+            font-weight: 700;
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            transform: rotate(-3deg);
+            position: relative;
+        }
+
+        .sig-box {
+            text-align: right;
+            position: relative;
+            padding: 4px 8px;
+        }
+
+        .sig-script {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.25rem;
+            color: #0f172a;
+        }
+
+        .viewer-stage.high-contrast .sig-script {
+            color: #38bdf8;
+        }
+
+        /* --- FORENSIC OVERLAYS --- */
+        .ocr-box {
+            display: none;
+            position: absolute;
+            inset: -2px;
+            border: 2px solid #2563eb;
+            background: rgba(37, 99, 235, 0.08);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .ocr-tag {
+            position: absolute;
+            top: -16px;
+            right: 0;
+            background: #2563eb;
+            color: white;
+            font-size: 0.62rem;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: 700;
+        }
+
+        .show-ocr .ocr-box {
+            display: block;
+        }
+
+        .ela-hotspot {
+            display: none;
+            position: absolute;
+            border-radius: 6px;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.65) 0%, rgba(245, 158, 11, 0.45) 60%, transparent 100%);
+            border: 1px dashed #ef4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        .show-heatmap .ela-hotspot.active-hotspot {
+            display: block;
+        }
+
+        .sig-vector-overlay {
+            display: none;
+            position: absolute;
+            inset: -4px;
+            border: 2px dashed #8b5cf6;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(139, 92, 246, 0.1),
+                rgba(139, 92, 246, 0.1) 6px,
+                rgba(139, 92, 246, 0.2) 6px,
+                rgba(139, 92, 246, 0.2) 12px
+            );
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .sig-vector-tag {
+            position: absolute;
+            bottom: -18px;
+            right: 0;
+            background: #7c3aed;
+            color: white;
+            font-size: 0.63rem;
+            padding: 1px 6px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+
+        .show-sig .sig-vector-overlay {
+            display: block;
+        }
+
+        /* --- RIGHT PANEL: TRUST SCORE & DECISION --- */
+        .score-banner-grid {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 16px;
+            align-items: center;
+            background: #f8fafc;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 18px;
+        }
+
+        .gauge-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gauge-svg {
+            width: 96px;
+            height: 96px;
+            transform: rotate(-90deg);
+        }
+
+        .gauge-bg {
+            fill: none;
+            stroke: #e2e8f0;
+            stroke-width: 10;
+        }
+
+        .gauge-Meter {
+            fill: none;
+            stroke: var(--success);
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 251.2;
+            stroke-dashoffset: 25.1;
+            transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+        }
+
+        .gauge-label {
+            margin-top: -64px;
+            margin-bottom: 26px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .gauge-caption {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .decision-banner {
+            padding: 14px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            line-height: 1.4;
+        }
+
+        .decision-pass {
+            background: var(--success-soft);
+            color: #065f46;
+            border: 1px solid #34d399;
+        }
+
+        .decision-warn {
+            background: var(--warning-soft);
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+
+        .decision-fail {
+            background: var(--danger-soft);
+            color: #991b1b;
+            border: 1px solid #f87171;
+        }
+
+        /* --- TABLES --- */
+        .section-subtitle {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 14px 0 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.83rem;
+        }
+
+        th, td {
+            padding: 10px 10px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .live-input {
+            width: 90px;
+            padding: 4px 7px;
+            border: 1px solid #94a3b8;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: var(--primary);
+            background: #fff;
+        }
+
+        .live-input:focus {
+            outline: 2px solid var(--accent);
+            border-color: transparent;
+        }
+
+        .badge {
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .badge-pass { background: var(--success-soft); color: #065f46; }
+        .badge-fail { background: var(--danger-soft); color: #991b1b; }
+        .badge-warn { background: var(--warning-soft); color: #92400e; }
+
+        /* --- OFFICIAL SIH TEAM FOOTER --- */
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-top: 3px solid #2563eb;
+            padding: 24px 2rem;
+            margin-top: auto;
+        }
+
+        .footer-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-problem h4 {
+            color: #93c5fd;
+            font-size: 0.92rem;
+            margin-bottom: 4px;
+        }
+
+        .footer-problem p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            max-width: 620px;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 10px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-badge-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid #f59e0b;
+            color: #fbbf24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .team-details small {
+            display: block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #94a3b8;
+        }
+
+        .team-name-display {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #fbbf24;
+            letter-spacing: 0.4px;
+        }
+
+        .team-meta-line {
+            font-size: 0.76rem;
+            color: #cbd5e1;
+            margin-top: 2px;
+        }
+
+        /* --- MODAL --- */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: white;
+            width: 100%;
+            max-width: 780px;
+            border-radius: 10px;
+            padding: 22px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 14px;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 0.78rem;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <header>
+        <div class="brand-group">
+            <div class="emblem-badge">AI</div>
+            <div class="brand-titles">
+                <h1>
+                    AICTE Automated Verification &amp; Forensics Gateway
+                    <span class="sih-pill">SIH26261 • Smart Automation</span>
+                </h1>
+                <p>AI-Powered Application Validation, Document Authentication &amp; APH Regulatory Compliance</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="status-chip">
+                <span class="pulse-dot"></span>
+                <span>AI Engine v2.4 Ready | Mock Gov-DB Connected</span>
+            </div>
+            <button class="btn btn-header" onclick="exportAuditJSON()">Export Audit JSON</button>
+            <button class="btn btn-header" onclick="window.print()">Print Official Report</button>
+            <button class="btn btn-primary" onclick="toggleModal('code-modal', true)">Flask API &amp; DB Code</button>
+        </div>
+    </header>
+
+    <!-- DEMO DOSSIER SWITCHER BAR -->
+    <div class="case-bar">
+        <div class="case-buttons">
+            <span class="case-label">Load Institution Dossier:</span>
+            <button class="case-btn active" id="btn-caseA" onclick="loadCase('A')">Case A: Apex Inst. of Tech (Compliant)</button>
+            <button class="case-btn" id="btn-caseB" onclick="loadCase('B')">Case B: Horizon Eng. College (Forged FDR)</button>
+            <button class="case-btn" id="btn-caseC" onclick="loadCase('C')">Case C: National Tech Academy (Norm Deficit)</button>
+        </div>
+        <div class="team-header-tag">
+            Submitted By: <span id="header-team-name">Team Kratoseyal..</span>
+        </div>
+    </div>
+
+    <!-- MAIN SPLIT WORKSPACE -->
+    <main class="dashboard">
+
+        <!-- LEFT COLUMN: DOCUMENT INPUT & FORENSICS -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>1. Institutional Dossier Input &amp; Forensic Inspector</h2>
+                <span style="font-size: 0.76rem; color: var(--text-muted);" id="doc-id-label">Dossier ID: AICTE-2026-8841</span>
+            </div>
+
+            <input type="file" id="file-input" accept=".pdf,image/*" style="display: none;" onchange="handleFileUpload(event)">
+            <div class="dropzone" onclick="document.getElementById('file-input').click()">
+                <h3>Drop Institution Affidavit / FDR Receipt (PDF, PNG, JPG) or Click to Browse</h3>
+                <p>Runs Real-Time OCR Text Extraction, EXIF Metadata Inspection &amp; Error Level Analysis (ELA)</p>
+            </div>
+
+            <div class="file-meta-bar" id="file-meta-bar">
+                <span><strong>File:</strong> <span id="meta-filename">Apex_Tech_Affidavit_2026.pdf</span></span>
+                <span><strong>Size:</strong> <span id="meta-filesize">1.42 MB</span></span>
+                <span><strong>SHA-256:</strong> <span id="meta-hash">8f9d...3a1c (Verified)</span></span>
+            </div>
+
+            <!-- FORENSIC OVERLAY CONTROLS -->
+            <div class="forensic-toolbar">
+                <button class="btn btn-outline active" id="btn-ocr" onclick="toggleLayer('ocr')">OCR Bounding Boxes</button>
+                <button class="btn btn-outline" id="btn-heatmap" onclick="toggleLayer('heatmap')">ELA Tamper Heatmap</button>
+                <button class="btn btn-outline" id="btn-sig" onclick="toggleLayer('sig')">Signature Vector Check</button>
+                <button class="btn btn-outline" id="btn-contrast" onclick="toggleLayer('contrast')">High-Contrast ELA Mode</button>
+            </div>
+
+            <!-- SIMULATED DOCUMENT STAGE -->
+            <div class="viewer-stage show-ocr" id="viewer-stage">
+                <div class="mock-document" id="mock-doc-card">
+                    <div class="doc-header">
+                        <h4>ALL INDIA COUNCIL FOR TECHNICAL EDUCATION</h4>
+                        <small>Affidavit-cum-Fixed Deposit Compliance Certificate (APH 2026–27)</small>
+                    </div>
+
+                    <div class="doc-grid">
+                        <div class="doc-field">
+                            <span class="label">Institution Name</span>
+                            <strong id="doc-inst-name">Apex Institute of Technology</strong>
+                            <div class="ocr-box"><span class="ocr-tag">OCR 99.4%</span></div>
+                        </div>
+                        <div class="doc-field">
+                            <span class="label">AICTE Permanent ID</span>
+                            <strong id="doc-pid">1-4492018321</strong>
+                            <div class="ocr-box"><span class="ocr-tag">OCR 99.8%</span></div>
+                        </div>
+                        <div class="doc-field">
+                            <span class="label">CSE Lab Computers</span>
+                            <strong id="doc-pcs">36 Systems</strong>
+                            <div class="ocr-box"><span class="ocr-tag">OCR 98.9%</span></div>
+                        </div>
+                        <div class="doc-field">
+                            <span class="label">Faculty-Student Ratio</span>
+                            <strong id="doc-ratio">1 : 18</strong>
+                            <div class="ocr-box"><span class="ocr-tag">OCR 99.1%</span></div>
+                        </div>
+                        <div class="doc-field">
+                            <span class="label">Contiguous Land Area</span>
+                            <strong id="doc-land">3.20 Acres</strong>
+                            <div class="ocr-box"><span class="ocr-tag">OCR 97.6%</span></div>
+                        </div>
+                        <div class="doc-field" id="fdr-field-box">
+                            <span class="label">FDR Security Deposit</span>
+                            <strong id="doc-fdr">₹ 15.00 Lakhs</strong>
+                            <div class="ocr-box"><span class="ocr-tag">OCR 96.2%</span></div>
+                            <div class="ela-hotspot" id="hotspot-fdr" style="inset: -6px;"></div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.74rem; color: #64748b;">
+                        We hereby solemnly affirm that the infrastructure, laboratory equipment, and financial reserve figures stated above are true and authentic as per AICTE norms.
+                    </p>
+
+                    <div class="doc-footer">
+                        <div class="stamp-box" id="stamp-box">
+                            STATE BANK VERIFIED<br><small>FDR SEAL #99201</small>
+                            <div class="ela-hotspot" id="hotspot-stamp" style="inset: -10px;"></div>
+                        </div>
+
+                        <div class="sig-box">
+                            <div class="sig-script" id="doc-sig-text">Dr. R. Venkataraman</div>
+                            <small style="font-size: 0.68rem; color: #64748b;">Registrar &amp; Authorized Signatory</small>
+                            <div class="sig-vector-overlay">
+                                <span class="sig-vector-tag" id="sig-vector-label">Vector Match: 96.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT COLUMN: AI ENGINE VERIFICATION & APH COMPLIANCE -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>2. AI Verification Matrix &amp; Regulatory Compliance Engine</h2>
+                <span style="font-size: 0.76rem; color: var(--accent); font-weight: 700;">Live Rule Simulator Active</span>
+            </div>
+
+            <!-- TRUST SCORE GAUGE + DECISION BANNER -->
+            <div class="score-banner-grid">
+                <div class="gauge-wrap">
+                    <svg class="gauge-svg" viewBox="0 0 100 100">
+                        <circle class="gauge-bg" cx="50" cy="50" r="40"></circle>
+                        <circle class="gauge-Meter" id="trust-gauge-circle" cx="50" cy="50" r="40"></circle>
+                    </svg>
+                    <div class="gauge-label" id="trust-score-val">96%</div>
+                    <div class="gauge-caption">Trust Score</div>
+                </div>
+
+                <div class="decision-banner decision-pass" id="decision-banner">
+                    APPROVED FOR STAGE-2 SCRUTINY: Document passes cryptographic &amp; ELA authenticity checks. All AICTE APH 2026–27 norms satisfied.
+                </div>
+            </div>
+
+            <!-- INTERACTIVE APH COMPLIANCE MATRIX -->
+            <div class="section-subtitle">
+                <span>AICTE Approval Process Handbook (APH) Norms Check</span>
+                <small style="color: var(--text-muted); font-weight: 500;">Edit extracted values to test rules live</small>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Regulatory Parameter</th>
+                        <th>Extracted OCR Value</th>
+                        <th>AICTE Mandatory Norm</th>
+                        <th>Compliance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CSE Lab Computers</strong></td>
+                        <td><input type="number" class="live-input" id="input-pcs" value="36" oninput="recalculateCompliance()"> PCs</td>
+                        <td>Min. 30 PCs (1:6 Ratio)</td>
+                        <td id="status-pcs"><span class="badge badge-pass">PASSED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Students per Faculty (1:X)</strong></td>
+                        <td>1 : <input type="number" class="live-input" id="input-ratio" value="18" oninput="recalculateCompliance()"></td>
+                        <td>Max. 1 : 20 Ratio</td>
+                        <td id="status-ratio"><span class="badge badge-pass">PASSED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contiguous Land Area</strong></td>
+                        <td><input type="number" step="0.1" class="live-input" id="input-land" value="3.2" oninput="recalculateCompliance()"> Acres</td>
+                        <td>Min. 2.50 Acres (Rural/Urban)</td>
+                        <td id="status-land"><span class="badge badge-pass">PASSED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Built-up Academic Area</strong></td>
+                        <td><input type="number" step="100" class="live-input" id="input-area" value="4800" oninput="recalculateCompliance()"> sq.m</td>
+                        <td>Min. 4,200 sq.m</td>
+                        <td id="status-area"><span class="badge badge-pass">PASSED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>FDR Security Deposit</strong></td>
+                        <td>₹ <input type="number" step="1" class="live-input" id="input-fdr" value="15" oninput="recalculateCompliance()"> Lakhs</td>
+                        <td>Min. ₹ 15.00 Lakhs</td>
+                        <td id="status-fdr"><span class="badge badge-pass">PASSED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- DOCUMENT AUTHENTICATION & FORENSICS TELEMETRY -->
+            <div class="section-subtitle" style="margin-top: 20px;">
+                <span>Document Authentication &amp; Digital Forensics Telemetry</span>
+            </div>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="width: 34%;"><strong>EXIF Software Header</strong></td>
+                        <td id="forensic-exif"> Ricoh MP C4504 Scanner (Direct Hardware Scan)</td>
+                        <td style="width: 22%;" id="badge-exif"><span class="badge badge-pass">AUTHENTIC</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Error Level Analysis (ELA)</strong></td>
+                        <td id="forensic-ela">Uniform 8x8 JPEG quantization grid across FDR &amp; Seal</td>
+                        <td id="badge-ela"><span class="badge badge-pass">CLEAN</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Signature Biometric Vector</strong></td>
+                        <td id="forensic-sig">96.8% Bezier stroke match with AICTE Registrar Registry</td>
+                        <td id="badge-sig"><span class="badge badge-pass">VERIFIED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <!-- OFFICIAL SIH SUBMISSION TEAM FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-problem">
+                <h4>Smart India Hackathon 2026 • Problem Statement SIH26261 (AICTE)</h4>
+                <p>
+                    <strong>AI-Powered Application Validation, Document Authentication and Regulatory Compliance Verification</strong> —
+                    Engineered to automate institutional scrutiny, detect forged affidavits/FDRs, and enforce AICTE Approval Process Handbook norms.
+                </p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-badge-icon">TK</div>
+                <div class="team-details">
+                    <small>Developed &amp; Engineered By</small>
+                    <div class="team-name-display" id="footer-team-name">Team Kratoseyal..</div>
+                    <div class="team-meta-line" id="footer-team-meta">Problem Code: SIH26261 • Theme: Smart Automation • AICTE</div>
+                </div>
+                <button class="btn btn-header" onclick="editTeamDetails()">Edit Team Info</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLASK BACKEND & DB MODAL -->
+    <div class="modal-backdrop" id="code-modal">
+        <div class="modal-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <h3 style="color:var(--primary);">Python Flask Backend &amp; Mock Government DB (`app.py`) — Team Kratoseyal..</h3>
+                <button class="btn btn-outline" onclick="toggleModal('code-modal', false)">Close</button>
+            </div>
+            <p style="font-size:0.82rem; color:var(--text-muted);">
+                Connect this frontend to your local Python Flask engine and SQLite database for live OCR &amp; ELA verification:
+            </p>
+            <pre>from flask import Flask, render_template, request, jsonify
+import sqlite3, hashlib
+
+app = Flask(__name__)
+
+# Team Kratoseyal.. — SIH26261 AICTE Verification Engine
+APH_NORMS = {
+    "min_pcs": 30,
+    "max_student_faculty_ratio": 20,
+    "min_land_acres": 2.5,
+    "min_builtup_sqm": 4200,
+    "min_fdr_lakhs": 15.0
+}
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/api/verify', methods=['POST'])
+def verify_dossier():
+    payload = request.get_json(silent=True) or {}
+    pcs = int(payload.get("pcs", 36))
+    ratio = int(payload.get("ratio", 18))
+    land = float(payload.get("land", 3.2))
+    fdr = float(payload.get("fdr", 15.0))
+
+    violations = []
+    if pcs &lt; APH_NORMS["min_pcs"]:
+        violations.append("CSE Lab PC shortfall")
+    if ratio &gt; APH_NORMS["max_student_faculty_ratio"]:
+        violations.append("Faculty-Student ratio non-compliant")
+    if land &lt; APH_NORMS["min_land_acres"]:
+        violations.append("Contiguous land below 2.5 acres")
+    if fdr &lt; APH_NORMS["min_fdr_lakhs"]:
+        violations.append("FDR security deposit shortfall")
+
+    return jsonify({
+        "team": "Team Kratoseyal..",
+        "problem_code": "SIH26261",
+        "compliant": len(violations) == 0,
+        "violations": violations
+    })
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000, debug=True)</pre>
+        </div>
+    </div>
+
+    <script>
+        // Pre-configured Dossier Cases for SIH Demo
+        const CASES = {
+            A: {
+                id: "AICTE-2026-8841",
+                filename: "Apex_Tech_Affidavit_2026.pdf",
+                filesize: "1.42 MB",
+                hash: "8f9d...3a1c (Verified)",
+                instName: "Apex Institute of Technology",
+                pid: "1-4492018321",
+                pcs: 36,
+                ratio: 18,
+                land: 3.2,
+                area: 4800,
+                fdr: 15,
+                sigText: "Dr. R. Venkataraman",
+                sigMatch: "Vector Match: 96.8%",
+                tampered: false,
+                exif: "Ricoh MP C4504 Scanner (Direct Hardware Scan)",
+                ela: "Uniform 8x8 JPEG quantization grid across FDR & Seal",
+                sigDesc: "96.8% Bezier stroke match with AICTE Registrar Registry"
+            },
+            B: {
+                id: "AICTE-2026-9104",
+                filename: "Horizon_College_FDR_Modified.pdf",
+                filesize: "2.85 MB",
+                hash: "e41b...90f2 (Hash Mismatch Alert)",
+                instName: "Horizon Engineering College",
+                pid: "1-7731094412",
+                pcs: 32,
+                ratio: 19,
+                land: 2.6,
+                area: 4350,
+                fdr: 15,
+                sigText: "Prof. S. K. Sharma",
+                sigMatch: "Vector Match: 14.2% (Cloned)",
+                tampered: true,
+                exif: "Adobe Photoshop 2025 (Edited 42 mins before upload)",
+                ela: "CRITICAL: High-contrast ELA compression anomaly on FDR Amount & Stamp",
+                sigDesc: "14.2% Confidence — Raster copy-paste edges detected around signature"
+            },
+            C: {
+                id: "AICTE-2026-7320",
+                filename: "National_Tech_Academy_Dossier.pdf",
+                filesize: "1.19 MB",
+                hash: "3c7a...11b8 (Verified)",
+                instName: "National Tech Academy",
+                pid: "1-3309182741",
+                pcs: 18,
+                ratio: 30,
+                land: 2.1,
+                area: 3600,
+                fdr: 10,
+                sigText: "Dr. M. Natarajan",
+                sigMatch: "Vector Match: 94.1%",
+                tampered: false,
+                exif: "Canon imageRUNNER ADVANCE (Direct Hardware Scan)",
+                ela: "Consistent compression profile — No pixel splicing detected",
+                sigDesc: "94.1% Bezier stroke match with AICTE Registrar Registry"
+            }
+        };
+
+        let currentCaseKey = 'A';
+
+        function loadCase(key) {
+            currentCaseKey = key;
+            const data = CASES[key];
+
+            // Update active button state
+            ['A', 'B', 'C'].forEach(k => {
+                document.getElementById('btn-case' + k).classList.toggle('active', k === key);
+            });
+
+            // Populate metadata & document preview
+            document.getElementById('doc-id-label').textContent = "Dossier ID: " + data.id;
+            document.getElementById('meta-filename').textContent = data.filename;
+            document.getElementById('meta-filesize').textContent = data.filesize;
+            document.getElementById('meta-hash').textContent = data.hash;
+
+            document.getElementById('doc-inst-name').textContent = data.instName;
+            document.getElementById('doc-pid').textContent = data.pid;
+            document.getElementById('doc-sig-text').textContent = data.sigText;
+            document.getElementById('sig-vector-label').textContent = data.sigMatch;
+
+            // Populate live inputs
+            document.getElementById('input-pcs').value = data.pcs;
+            document.getElementById('input-ratio').value = data.ratio;
+            document.getElementById('input-land').value = data.land;
+            document.getElementById('input-area').value = data.area;
+            document.getElementById('input-fdr').value = data.fdr;
+
+            // Update forensic hotspots
+            document.getElementById('hotspot-fdr').classList.toggle('active-hotspot', data.tampered);
+            document.getElementById('hotspot-stamp').classList.toggle('active-hotspot', data.tampered);
+
+            // Auto-enable heatmap on Case B so judges immediately see tampering
+            if (data.tampered) {
+                document.getElementById('viewer-stage').classList.add('show-heatmap');
+                document.getElementById('btn-heatmap').classList.add('active');
+            } else {
+                document.getElementById('viewer-stage').classList.remove('show-heatmap');
+                document.getElementById('btn-heatmap').classList.remove('active');
+            }
+
+            // Update forensics table
+            document.getElementById('forensic-exif').textContent = data.exif;
+            document.getElementById('forensic-ela').textContent = data.ela;
+            document.getElementById('forensic-sig').textContent = data.sigDesc;
+
+            if (data.tampered) {
+                document.getElementById('badge-exif').innerHTML = '<span class="badge badge-fail">TAMPERED</span>';
+                document.getElementById('badge-ela').innerHTML = '<span class="badge badge-fail">SPLICED</span>';
+                document.getElementById('badge-sig').innerHTML = '<span class="badge badge-fail">FORGED</span>';
+            } else {
+                document.getElementById('badge-exif').innerHTML = '<span class="badge badge-pass">AUTHENTIC</span>';
+                document.getElementById('badge-ela').innerHTML = '<span class="badge badge-pass">CLEAN</span>';
+                document.getElementById('badge-sig').innerHTML = '<span class="badge badge-pass">VERIFIED</span>';
+            }
+
+            recalculateCompliance();
+        }
+
+        function recalculateCompliance() {
+            const pcs = parseFloat(document.getElementById('input-pcs').value) || 0;
+            const ratio = parseFloat(document.getElementById('input-ratio').value) || 99;
+            const land = parseFloat(document.getElementById('input-land').value) || 0;
+            const area = parseFloat(document.getElementById('input-area').value) || 0;
+            const fdr = parseFloat(document.getElementById('input-fdr').value) || 0;
+
+            // Sync document preview text
+            document.getElementById('doc-pcs').textContent = pcs + " Systems";
+            document.getElementById('doc-ratio').textContent = "1 : " + ratio;
+            document.getElementById('doc-land').textContent = land.toFixed(2) + " Acres";
+            document.getElementById('doc-fdr').textContent = "₹ " + fdr.toFixed(2) + " Lakhs";
+
+            const passPcs = pcs >= 30;
+            const passRatio = ratio <= 20 && ratio > 0;
+            const passLand = land >= 2.5;
+            const passArea = area >= 4200;
+            const passFdr = fdr >= 15;
+
+            setBadge('status-pcs', passPcs);
+            setBadge('status-ratio', passRatio);
+            setBadge('status-land', passLand);
+            setBadge('status-area', passArea);
+            setBadge('status-fdr', passFdr);
+
+            const passedCount = [passPcs, passRatio, passLand, passArea, passFdr].filter(Boolean).length;
+            const isTampered = CASES[currentCaseKey].tampered;
+
+            let score = Math.round((passedCount / 5) * 60) + (isTampered ? 8 : 36);
+            score = Math.max(12, Math.min(99, score));
+
+            // Update circular gauge
+            const circle = document.getElementById('trust-gauge-circle');
+            const circumference = 251.2;
+            circle.style.strokeDashoffset = circumference - (score / 100) * circumference;
+            document.getElementById('trust-score-val').textContent = score + "%";
+
+            const banner = document.getElementById('decision-banner');
+            if (isTampered) {
+                circle.style.stroke = "var(--danger)";
+                banner.className = "decision-banner decision-fail";
+                banner.innerHTML = "CRITICAL REJECTION (FORGERY ALERT): Adobe Photoshop EXIF trace &amp; ELA pixel splicing detected on Fixed Deposit Receipt.";
+            } else if (passedCount < 5) {
+                circle.style.stroke = "var(--warning)";
+                banner.className = "decision-banner decision-warn";
+                banner.innerHTML = `DEFICIENCY NOTICE GENERATED: Document is authentic, but fails ${5 - passedCount} out of 5 mandatory AICTE APH 2026–27 infrastructure norms.`;
+            } else {
+                circle.style.stroke = "var(--success)";
+                banner.className = "decision-banner decision-pass";
+                banner.innerHTML = "APPROVED FOR STAGE-2 SCRUTINY: Document passes cryptographic &amp; ELA authenticity checks. All AICTE APH 2026–27 norms satisfied.";
+            }
+        }
+
+        function setBadge(id, passed) {
+            document.getElementById(id).innerHTML = passed
+                ? '<span class="badge badge-pass">PASSED</span>'
+                : '<span class="badge badge-fail">DEFICIT</span>';
+        }
+
+        function toggleLayer(type) {
+            const stage = document.getElementById('viewer-stage');
+            const map = {
+                ocr: { cls: 'show-ocr', btn: 'btn-ocr' },
+                heatmap: { cls: 'show-heatmap', btn: 'btn-heatmap' },
+                sig: { cls: 'show-sig', btn: 'btn-sig' },
+                contrast: { cls: 'high-contrast', btn: 'btn-contrast' }
+            };
+            const target = map[type];
+            stage.classList.toggle(target.cls);
+            document.getElementById(target.btn).classList.toggle('active');
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            document.getElementById('meta-filename').textContent = file.name;
+            document.getElementById('meta-filesize').textContent = (file.size / 1024).toFixed(1) + " KB";
+            document.getElementById('meta-hash').textContent = "Live Scan Completed";
+        }
+
+        function editTeamDetails() {
+            const currentName = document.getElementById('footer-team-name').textContent;
+            const newName = prompt("Enter Team Name for SIH Submission:", currentName);
+            if (newName && newName.trim() !== "") {
+                document.getElementById('footer-team-name').textContent = newName.trim();
+                document.getElementById('header-team-name').textContent = newName.trim();
+            }
+        }
+
+        function exportAuditJSON() {
+            const report = {
+                problemStatement: "SIH26261",
+                submittedByTeam: document.getElementById('footer-team-name').textContent,
+                institution: document.getElementById('doc-inst-name').textContent,
+                trustScore: document.getElementById('trust-score-val').textContent,
+                timestamp: new Date().toISOString()
+            };
+            const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "SIH26261_Audit_Report_Team_Kratoseyal.json";
+            a.click();
+        }
+
+        function toggleModal(id, show) {
+            document.getElementById(id).style.display = show ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>
